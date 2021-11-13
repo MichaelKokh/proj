@@ -13,6 +13,7 @@ def start_message(message):
     user_id = message.from_user.id
     controller[user_id] = 'start'
 
+@bot.message_handler(content_types=['text'])
 def start(message):
     user_id = message.from_user.id
     user_choice = message.text
@@ -27,10 +28,10 @@ def start(message):
 def start_handler(user_id, user_choice):
     lev, c1, c2 = map(int,user_choice.split())
     a = 0
-    ch = [-1] * c1 + [1] * c2)
+    ch = [-1] * c1 + [1] * c2
     for i in range(lvl):
         a += int(ch[random.randint(0, len(ch))])
-    bot.send_message(message.from_user.id, """корзина номер', 2 ** lvl - a, 'вас ждет на этот раз""")
+    bot.send_message(message.from_user.id, """корзина номер {} вас ждет на этот раз""".format(2**lvl + a))
 """
 lev = int(input("сколько уровней вы бы хотели? "))
 c1, c2 = map(int, input("с каким соотношением вы бы хотели выпадение левого пути? В ответе нужно два число через пробел").split())
