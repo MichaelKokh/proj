@@ -42,5 +42,5 @@ def start_handler(user_id, user_choice):
         return answer
         #bot.send_message(user_id, answer)
     else:
-        print('задай нормально')
+        return 'задай нормально'
 bot.polling()
