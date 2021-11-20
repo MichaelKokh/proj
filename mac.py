@@ -32,7 +32,7 @@ def start_handler(user_id, user_choice):
     for i in range(lev):
         a += int(ch[random.randint(0, len(ch)-1)])
     answer =  """корзина номер {} вас ждет на этот раз""".format(2**lev + a)
-    bot.send_message(from_user.message.chat.id, answer)
+    bot.send_message(user_id, answer)
 """
 lev = int(input("сколько уровней вы бы хотели? "))
 c1, c2 = map(int, input("с каким соотношением вы бы хотели выпадение левого пути? В ответе нужно два число через пробел").split())
