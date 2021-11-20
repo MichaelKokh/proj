@@ -27,17 +27,20 @@ def start(message):
 def start_handler(user_id, user_choice):
     c3 = 0
     a = 0
-    try:
-        lev, c1, c2, c3 = map(int, user_choice.split()) #закидываем количество уровней, коэфициенты и количество разделений на уровне
-    except ValueError:
-        lev, c1, c2 = map(int, user_choice.split())
-    ch = [-1] * c1 + [1] * c2 #массив, определяющий, куда падает мяч, -1 - влево, +1 - вправо
-    for i in range(lev):
-        a += int(ch[random.randint(0, len(ch)-1)])
-    if (c3):
-        answer = """корзина номер {} вас ждет на этот раз""".format((c3)**lev + a)
+    if len(user_choice) > 4:
+        try:
+            lev, c1, c2, c3 = map(int, user_choice.split()) #закидываем количество уровней, коэфициенты и количество разделений на уровне
+        except ValueError:
+            lev, c1, c2 = map(int, user_choice.split())
+        ch = [-1] * c1 + [1] * c2 #массив, определяющий, куда падает мяч, -1 - влево, +1 - вправо
+        for i in range(lev):
+            a += int(ch[random.randint(0, len(ch)-1)])
+        if (c3):
+            answer = """корзина номер {} вас ждет на этот раз""".format((c3)**lev + a)
+        else:
+            answer = """корзина номер {} вас ждет на этот раз""".format(2**lev + a)
+        return answer
+        #bot.send_message(user_id, answer)
     else:
-        answer = """корзина номер {} вас ждет на этот раз""".format(2**lev + a)
-    return answer
-    #bot.send_message(user_id, answer)
+        print('задай нормально')
 bot.polling()
